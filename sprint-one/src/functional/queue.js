@@ -3,26 +3,25 @@ var Queue = function() {
 
   // Use an object with numeric keys to store values
   var storage = {};
-  var count = 0;
-  var dequeuePosition = 0;
-  var enqueuePosition = 0;
   // Implement the methods below
+  var count = 0;
+  var dequePos = 0;
+  var enqueuePos = 0;
 
   someInstance.enqueue = function(value) {
-    storage[enqueuePosition + ''] = value;
-    enqueuePosition++;
+    storage[enqueuePos] = value;
     count++;
+    enqueuePos++;
   };
 
   someInstance.dequeue = function() {
-    if (count <= 0) {
-      return 0;
+    if (count > 0) {
+      var temp = storage[dequePos];
+      delete storage[dequePos];
+      count--;
+      dequePos++;
+      return temp;
     }
-    var deqValue = storage[dequeuePosition];
-    delete storage[dequeuePosition];
-    dequeuePosition++;
-    count--;
-    return deqValue;
   };
 
   someInstance.size = function() {
