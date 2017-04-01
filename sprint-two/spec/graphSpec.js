@@ -68,4 +68,17 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should check for existence of value in the graph', function() {
+    var doesValueExist = false;
+    var checkValue = function(item, value) {
+      doesValueExist = doesValueExist || (parseInt(item) === value);
+    };
+    graph.addNode(1);
+    graph.addNode(2);
+    graph.addNode(5);
+    graph.addNode(3);
+    graph.forEachNode(checkValue, 5);
+    expect(doesValueExist).to.equal(true);
+  });
 });

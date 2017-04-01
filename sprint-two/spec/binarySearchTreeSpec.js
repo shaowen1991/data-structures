@@ -36,4 +36,17 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3]);
   });
+
+
+  it('should have correct depth property of nodes', function() {
+    binarySearchTree.insert(2);
+    binarySearchTree.insert(6);
+    expect(binarySearchTree.depth).to.eql(0);
+    expect(binarySearchTree.left.depth).to.eql(1);
+    expect(binarySearchTree.right.depth).to.eql(1);
+    binarySearchTree.insert(1);
+    expect(binarySearchTree.left.left.depth).to.eql(2);
+    expect(binarySearchTree.right.depth).to.eql(1);
+  });
+  
 });

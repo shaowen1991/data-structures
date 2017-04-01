@@ -24,4 +24,13 @@ describe('set', function() {
     expect(set.contains('Mel Gibson')).to.equal(false);
   });
 
+  it('should verify values are not duplicated', function() {
+    var arr = [];
+    set.add('Brad Pitt');
+    set.add('Angelina Jolie');
+    set.add('Brad Pitt');
+    var size = set._storage._size;
+    console.log(set);
+    expect(size).to.equal(2);
+  });
 });

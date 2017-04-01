@@ -47,6 +47,15 @@ describe('hashTable', function() {
     window.getIndexBelowMaxForKey = oldHashFunction;
   });
 
+  it('should check the number of tuples in hash table', function() {
+    hashTable.insert('Bob', 'Loblaw');
+    hashTable.insert('Bob', 'Barker');
+    hashTable.insert('Steven', 'Tyler');
+    expect(hashTable._size).to.equal(2);
+    hashTable.remove('Steven');
+    expect(hashTable._size).to.equal(1);
+  });
+
   // (Advanced! Remove the extra "x" when you want the following tests to run)
   xit ('should double in size when needed', function() {
     _.each(people, function(person) {

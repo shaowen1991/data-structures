@@ -4,17 +4,20 @@ var BinarySearchTree = function(value) {
   binaryTreeNode.value = value;
   binaryTreeNode.left = null;
   binaryTreeNode.right = null;
+  binaryTreeNode.depth = 0;
 
   binaryTreeNode.insert = function(value) {
     if (value < binaryTreeNode.value) {
       if (binaryTreeNode.left === null) {
-        binaryTreeNode.left = BinarySearchTree(value);        
+        binaryTreeNode.left = BinarySearchTree(value);
+        binaryTreeNode.left.depth = binaryTreeNode.depth + 1;        
       } else {
         binaryTreeNode.left.insert(value);
       }
     } else {
       if (binaryTreeNode.right === null) {
-        binaryTreeNode.right = BinarySearchTree(value);        
+        binaryTreeNode.right = BinarySearchTree(value);
+        binaryTreeNode.right.depth = binaryTreeNode.depth + 1;        
       } else {
         binaryTreeNode.right.insert(value);
       }

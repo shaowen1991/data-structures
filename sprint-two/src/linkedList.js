@@ -2,6 +2,7 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
+  list.size = 0;
 
   list.addToTail = function(value) {
     var newNode = Node(value);
@@ -12,17 +13,19 @@ var LinkedList = function() {
       list.tail.next = newNode;
       list.tail = newNode;  
     }
+    list.size++;
   };
 
   list.removeHead = function() {
     var formerHead = list.head.value;
     list.head = list.head.next;
+    list.size--;
     return formerHead;
   };
 
   list.contains = function(target) {
     var searchPtr = list.head;
-    while(searchPtr !== null) {
+    while (searchPtr !== null) {
       if (searchPtr.value === target) {
         return true;
       }
